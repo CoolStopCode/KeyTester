@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.switch-grid {
+    display: grid;
+    gap: 20px;
+    background-color: white;
+    padding: 32px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+    width: min(95vw, 1200px);
+    aspect-ratio: 1.5; /* 6:4 ratio */
+}
+
+.switch-card {
+    cursor: grab;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out; /* Smooth scaling */
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.switch-card.dragging {
+    cursor: grabbing;
+    opacity: 0.9;
+    z-index: 1000;
+    pointer-events: none;
+    width: calc(var(--card-width) + 8px); /* Slightly larger */
+    height: calc(var(--card-width) + 8px);
+}
+
+/* Apply transition when swapping elements */
+.switch-card.swapping {
+    transition: transform 0.3s ease-in-out; /* Smooth animation for swapping */
+}
+
+.switch-card.drag-over {
+    transform: scale(0.95);
+    opacity: 0.5;
+    transition: transform 0.1s ease; /* Quicker scaling */
+}
+
+.switch-title {
+    margin: 0 0 12px 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.switch-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.spec-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.spec-value {
+    font-weight: 600;
+}
+
+/* Subtle texture overlay */
+.switch-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 100% 100%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
+    pointer-events: none;
+}
+
+.placeholder {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
