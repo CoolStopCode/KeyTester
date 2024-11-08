@@ -8,23 +8,25 @@ body {
     justify-content: center;
     align-items: center;
     user-select: none;
+    overflow: hidden; /* Prevent scrollbars */
 }
 
 .switch-grid {
     display: grid;
-    gap: 20px;
+    gap: 10px; /* Reduced gap */
     background-color: white;
-    padding: 32px;
-    border-radius: 24px;
+    padding: 16px; /* Reduced padding */
+    border-radius: 12px;
     box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
-    width: min(95vw, 1200px);
-    aspect-ratio: 1.5; /* 6:4 ratio */
+    width: 100%;
+    max-width: 1000px; /* Limit max width */
+    grid-template-columns: repeat(6, 1fr); /* 6 columns */
+    grid-template-rows: repeat(4, 1fr); /* Adjusted rows for fit */
 }
 
 .switch-card {
     cursor: grab;
     overflow: hidden;
-    transition: transform 0.2s ease-in-out; /* Smooth scaling */
     aspect-ratio: 1;
     display: flex;
     flex-direction: column;
@@ -32,6 +34,7 @@ body {
     align-items: center;
     text-align: center;
     position: relative;
+    transition: transform 0.2s ease-in-out; /* Smooth scaling */
 }
 
 .switch-card.dragging {
@@ -43,11 +46,6 @@ body {
     height: calc(var(--card-width) + 8px);
 }
 
-/* Apply transition when swapping elements */
-.switch-card.swapping {
-    transition: transform 0.3s ease-in-out; /* Smooth animation for swapping */
-}
-
 .switch-card.drag-over {
     transform: scale(0.95);
     opacity: 0.5;
@@ -55,17 +53,24 @@ body {
 }
 
 .switch-title {
-    margin: 0 0 12px 0;
-    font-size: 1.1rem;
+    margin: 0 0 6px 0;
+    font-size: 1.1rem; /* Slightly smaller */
     font-weight: 700;
     letter-spacing: -0.01em;
+    text-transform: capitalize;
+}
+
+.switch-type {
+    font-size: 1.0rem; /* Slightly smaller */
+    font-weight: 600;
+    margin: 0 0 12px 0; /* Space below subtitle */
 }
 
 .switch-specs {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Slightly smaller text */
     width: 100%;
 }
 
@@ -76,7 +81,7 @@ body {
 }
 
 .spec-label {
-    font-size: 0.75rem;
+    font-size: 0.7rem; /* Smaller font */
     text-transform: uppercase;
     font-weight: 600;
 }
@@ -100,4 +105,22 @@ body {
 .placeholder {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 12px;
+}
+
+@media screen and (max-width: 1200px) {
+    .switch-grid {
+        grid-template-columns: repeat(5, 1fr); /* 5 columns on medium screens */
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .switch-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns on smaller screens */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .switch-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on very small screens */
+    }
 }

@@ -1,195 +1,201 @@
 const switchData = {
     items: {
-        "cherry_red": {
+        "cherry_mx_red": {
             "color": "#FF6B6B",
             "title": "Cherry MX Red",
+            "type": "Linear",
             "start-pressure": "45g",
             "end-pressure": "60g",
             "actuation-distance": "2.0mm",
             "bottom-out": "4.0mm"
         },
-        "cherry_brown": {
+        "cherry_mx_brown": {
             "color": "#BC8A5F",
             "title": "Cherry MX Brown",
+            "type": "Tactile",
             "start-pressure": "45g",
             "end-pressure": "55g",
             "actuation-distance": "2.0mm",
             "bottom-out": "4.0mm"
         },
-        "cherry_blue": {
+        "cherry_mx_blue": {
             "color": "#4DABF7",
             "title": "Cherry MX Blue",
+            "type": "Clicky",
             "start-pressure": "50g",
             "end-pressure": "60g",
             "actuation-distance": "2.2mm",
             "bottom-out": "4.0mm"
         },
-        "gateron_yellow": {
-            "color": "#FFD93D",
-            "title": "Gateron Yellow",
-            "start-pressure": "50g",
-            "end-pressure": "65g",
+        "gateron_red": {
+            "color": "#FF4040",
+            "title": "Gateron Red",
+            "type": "Linear",
+            "start-pressure": "45g",
+            "end-pressure": "55g",
             "actuation-distance": "2.0mm",
             "bottom-out": "4.0mm"
         },
-        "gateron_black": {
-            "color": "#495057",
-            "title": "Gateron Black",
-            "start-pressure": "60g",
-            "end-pressure": "75g",
+        "gateron_brown": {
+            "color": "#D6A15C",
+            "title": "Gateron Brown",
+            "type": "Tactile",
+            "start-pressure": "45g",
+            "end-pressure": "55g",
             "actuation-distance": "2.0mm",
             "bottom-out": "4.0mm"
         },
-        "kailh_box_jade": {
-            "color": "#20C997",
-            "title": "Kailh Box Jade",
+        "gateron_blue": {
+            "color": "#4D79F7",
+            "title": "Gateron Blue",
+            "type": "Clicky",
             "start-pressure": "50g",
-            "end-pressure": "75g",
+            "end-pressure": "60g",
+            "actuation-distance": "2.2mm",
+            "bottom-out": "4.0mm"
+        },
+        "kalih_red": {
+            "color": "#FF6D6D",
+            "title": "Kailh Red",
+            "type": "Linear",
+            "start-pressure": "45g",
+            "end-pressure": "55g",
+            "actuation-distance": "2.0mm",
+            "bottom-out": "4.0mm"
+        },
+        "kalih_brown": {
+            "color": "#C9A174",
+            "title": "Kailh Brown",
+            "type": "Tactile",
+            "start-pressure": "50g",
+            "end-pressure": "60g",
+            "actuation-distance": "2.0mm",
+            "bottom-out": "4.0mm"
+        },
+        "kalih_box_white": {
+            "color": "#F9F9F9",
+            "title": "Kailh Box White",
+            "type": "Clicky",
+            "start-pressure": "50g",
+            "end-pressure": "60g",
             "actuation-distance": "1.8mm",
-            "bottom-out": "3.6mm"
+            "bottom-out": "4.0mm"
         },
-        "zealio_v2": {
-            "color": "#BE4BDB",
-            "title": "Zealio V2",
-            "start-pressure": "62g",
-            "end-pressure": "78g",
+        "zorro_red": {
+            "color": "#E52B50",
+            "title": "Zorro Red",
+            "type": "Linear",
+            "start-pressure": "50g",
+            "end-pressure": "55g",
             "actuation-distance": "2.0mm",
+            "bottom-out": "4.0mm"
+        },
+        "zorro_brown": {
+            "color": "#C8A77A",
+            "title": "Zorro Brown",
+            "type": "Tactile",
+            "start-pressure": "50g",
+            "end-pressure": "55g",
+            "actuation-distance": "2.0mm",
+            "bottom-out": "4.0mm"
+        },
+        "zorro_blue": {
+            "color": "#6D94D9",
+            "title": "Zorro Blue",
+            "type": "Clicky",
+            "start-pressure": "50g",
+            "end-pressure": "60g",
+            "actuation-distance": "2.2mm",
             "bottom-out": "4.0mm"
         },
         "holy_panda": {
-            "color": "#FA5252",
+            "color": "#8C5D3B",
             "title": "Holy Panda",
-            "start-pressure": "67g",
-            "end-pressure": "80g",
-            "actuation-distance": "2.4mm",
-            "bottom-out": "3.8mm"
-        },
-        "alpaca": {
-            "color": "#FF922B",
-            "title": "Alpaca",
+            "type": "Tactile",
             "start-pressure": "55g",
             "end-pressure": "65g",
             "actuation-distance": "2.0mm",
             "bottom-out": "4.0mm"
         },
-        "tangerine": {
-            "color": "#FFA94D",
-            "title": "C³ Tangerine",
-            "start-pressure": "67g",
-            "end-pressure": "72g",
-            "actuation-distance": "2.0mm",
-            "bottom-out": "4.0mm"
-        },
-        "boba_u4t": {
-            "color": "#748FFC",
-            "title": "Boba U4T",
-            "start-pressure": "62g",
-            "end-pressure": "68g",
-            "actuation-distance": "1.8mm",
-            "bottom-out": "4.0mm"
-        },
-        "nk_cream": {
-            "color": "#F8F9FA",
-            "title": "NovelKeys Cream",
-            "start-pressure": "55g",
-            "end-pressure": "70g",
-            "actuation-distance": "2.0mm",
-            "bottom-out": "4.0mm"
-        },
-        "ink_black": {
-            "color": "#212529",
-            "title": "Gateron Ink Black",
-            "start-pressure": "60g",
-            "end-pressure": "70g",
-            "actuation-distance": "2.0mm",
-            "bottom-out": "4.0mm"
-        },
-        "kailh_speed_silver": {
-            "color": "#CED4DA",
-            "title": "Kailh Speed Silver",
-            "start-pressure": "40g",
-            "end-pressure": "50g",
-            "actuation-distance": "1.1mm",
-            "bottom-out": "3.5mm"
-        },
-        "tealios": {
-            "color": "#20C997",
-            "title": "Tealios V2",
-            "start-pressure": "65g",
-            "end-pressure": "75g",
-            "actuation-distance": "2.0mm",
-            "bottom-out": "4.0mm"
-        },
-        "box_navy": {
-            "color": "#339AF0",
-            "title": "Kailh Box Navy",
-            "start-pressure": "60g",
-            "end-pressure": "90g",
-            "actuation-distance": "1.8mm",
-            "bottom-out": "3.6mm"
-        },
-        "everglide_aqua": {
-            "color": "#66D9E8",
-            "title": "Everglide Aqua King",
+        "tactile_panda": {
+            "color": "#B09C73",
+            "title": "Tactile Panda",
+            "type": "Tactile",
             "start-pressure": "55g",
             "end-pressure": "65g",
             "actuation-distance": "2.0mm",
             "bottom-out": "4.0mm"
         },
-        "durock_pom": {
-            "color": "#FFE066",
-            "title": "Durock POM",
-            "start-pressure": "63.5g",
-            "end-pressure": "72g",
-            "actuation-distance": "2.0mm",
-            "bottom-out": "4.0mm"
-        },
-        "lavender": {
-            "color": "#E599F7",
-            "title": "Lavender Linear",
-            "start-pressure": "65g",
-            "end-pressure": "75g",
-            "actuation-distance": "2.0mm",
-            "bottom-out": "4.0mm"
-        },
-        "mx_silent_red": {
-            "color": "#FFA8A8",
-            "title": "Cherry Silent Red",
-            "start-pressure": "45g",
+        "box_white": {
+            "color": "#F9F9F9",
+            "title": "Box White",
+            "type": "Clicky",
+            "start-pressure": "50g",
             "end-pressure": "60g",
             "actuation-distance": "2.0mm",
-            "bottom-out": "3.7mm"
+            "bottom-out": "4.0mm"
         },
-        "kailh_pro_burgundy": {
-            "color": "#862E9C",
-            "title": "Kailh Pro Burgundy",
-            "start-pressure": "50g",
-            "end-pressure": "70g",
-            "actuation-distance": "1.7mm",
-            "bottom-out": "3.6mm"
-        },
-        "nk_silk_yellow": {
-            "color": "#FCC419",
-            "title": "NK_ Silk Yellow",
-            "start-pressure": "50g",
-            "end-pressure": "63.5g",
+        "box_red": {
+            "color": "#FF4040",
+            "title": "Box Red",
+            "type": "Linear",
+            "start-pressure": "45g",
+            "end-pressure": "55g",
             "actuation-distance": "2.0mm",
             "bottom-out": "4.0mm"
         },
-        "gateron_cap_golden": {
-            "color": "#FAB005",
-            "title": "Gateron CAP Golden",
-            "start-pressure": "55g",
-            "end-pressure": "65g",
+        "gateron_silent_red": {
+            "color": "#FF6F6F",
+            "title": "Gateron Silent Red",
+            "type": "Linear",
+            "start-pressure": "45g",
+            "end-pressure": "55g",
             "actuation-distance": "2.0mm",
             "bottom-out": "4.0mm"
         },
-        "sp_star_meteor": {
-            "color": "#7950F2",
-            "title": "SP-Star Meteor",
-            "start-pressure": "57g",
-            "end-pressure": "67g",
+        "gateron_silent_brown": {
+            "color": "#D6A15C",
+            "title": "Gateron Silent Brown",
+            "type": "Tactile",
+            "start-pressure": "45g",
+            "end-pressure": "55g",
             "actuation-distance": "2.0mm",
+            "bottom-out": "4.0mm"
+        },
+        "gateron_silent_blue": {
+            "color": "#4D79F7",
+            "title": "Gateron Silent Blue",
+            "type": "Clicky",
+            "start-pressure": "50g",
+            "end-pressure": "60g",
+            "actuation-distance": "2.2mm",
+            "bottom-out": "4.0mm"
+        },
+        "cherry_mx_silent_red": {
+            "color": "#FF6B6B",
+            "title": "Cherry MX Silent Red",
+            "type": "Linear",
+            "start-pressure": "45g",
+            "end-pressure": "55g",
+            "actuation-distance": "2.0mm",
+            "bottom-out": "4.0mm"
+        },
+        "cherry_mx_silent_brown": {
+            "color": "#BC8A5F",
+            "title": "Cherry MX Silent Brown",
+            "type": "Tactile",
+            "start-pressure": "45g",
+            "end-pressure": "55g",
+            "actuation-distance": "2.0mm",
+            "bottom-out": "4.0mm"
+        },
+        "cherry_mx_silent_blue": {
+            "color": "#4DABF7",
+            "title": "Cherry MX Silent Blue",
+            "type": "Clicky",
+            "start-pressure": "50g",
+            "end-pressure": "60g",
+            "actuation-distance": "2.2mm",
             "bottom-out": "4.0mm"
         }
     }
