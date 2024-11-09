@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    padding: 20px;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background-color: #f8f9fa;
     min-height: 100vh;
@@ -12,14 +11,16 @@ body {
 }
 
 .switch-grid {
+    top: 5px;
+    bottom: 5px;
     display: grid;
-    gap: 10px; /* Reduced gap */
+    gap: 20px; /* Reduced gap */
     background-color: white;
     padding: 16px; /* Reduced padding */
     border-radius: 12px;
     box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 1000px; /* Limit max width */
+    max-width: 67%; /* Limit max width */
     grid-template-columns: repeat(6, 1fr); /* 6 columns */
     grid-template-rows: repeat(4, 1fr); /* Adjusted rows for fit */
 }
@@ -42,8 +43,8 @@ body {
     opacity: 0.9;
     z-index: 1000;
     pointer-events: none;
-    width: calc(var(--card-width) + 8px); /* Slightly larger */
-    height: calc(var(--card-width) + 8px);
+    width: calc(var(--card-width)); /* Slightly larger */
+    height: calc(var(--card-width));
 }
 
 .switch-card.drag-over {
@@ -70,15 +71,20 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-    font-size: 0.85rem; /* Slightly smaller text */
+    font-size: 0.85rem;
     width: 100%;
+    align-items: center; /* Centers vertically */
+    justify-items: center; /* Centers horizontally */
 }
 
 .spec-item {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    align-items: center; /* Center the content horizontally */
+    justify-content: center; /* Center the content vertically */
 }
+
 
 .spec-label {
     font-size: 0.7rem; /* Smaller font */
