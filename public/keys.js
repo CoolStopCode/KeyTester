@@ -1,22 +1,22 @@
 const switchData = {
     items: {
-        "cherry_mx_red": {
-            "color": "#FF6B6B",
-            "title": "Cherry MX Red",
+        "kailh_box_black": {
+            "color": "#292929",
+            "title": "Kailh Box Black",
             "type": "Linear",
             "start-pressure": "45g",
-            "end-pressure": "60g",
-            "actuation-distance": "2.0mm",
-            "bottom-out": "4.0mm"
+            "end-pressure": "75g",
+            "actuation-distance": "1.8mm",
+            "bottom-out": "3.6mm"
         },
-        "cherry_mx_brown": {
-            "color": "#BC8A5F",
-            "title": "Cherry MX Brown",
-            "type": "Tactile",
-            "start-pressure": "45g",
-            "end-pressure": "55g",
-            "actuation-distance": "2.0mm",
-            "bottom-out": "4.0mm"
+        "kailh_box_pale_blue": {
+            "color": "#FFFF00",
+            "title": "Kailh Box Pale Blue",
+            "type": "Clicky",
+            "start-pressure": "60g",
+            "end-pressure": "80g",
+            "actuation-distance": "1.8mm",
+            "bottom-out": "3.6mm"
         },
         "cherry_mx_blue": {
             "color": "#4DABF7",

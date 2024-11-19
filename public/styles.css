@@ -7,22 +7,18 @@ body {
     justify-content: center;
     align-items: center;
     user-select: none;
-    overflow: hidden; /* Prevent scrollbars */
+    overflow: hidden;
 }
 
 .switch-grid {
-    top: 5px;
-    bottom: 5px;
+    width: 67%;
     display: grid;
-    gap: 20px; /* Reduced gap */
+    gap: 20px;
     background-color: white;
-    padding: 16px; /* Reduced padding */
+    padding: 16px;
     border-radius: 12px;
     box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 67%; /* Limit max width */
-    grid-template-columns: repeat(6, 1fr); /* 6 columns */
-    grid-template-rows: repeat(4, 1fr); /* Adjusted rows for fit */
+    grid-template-columns: repeat(6, 1fr);
 }
 
 .switch-card {
@@ -35,7 +31,7 @@ body {
     align-items: center;
     text-align: center;
     position: relative;
-    transition: transform 0.2s ease-in-out; /* Smooth scaling */
+    transition: transform 0.2s ease-in-out;
 }
 
 .switch-card.dragging {
@@ -43,60 +39,64 @@ body {
     opacity: 0.9;
     z-index: 1000;
     pointer-events: none;
-    width: calc(var(--card-width)); /* Slightly larger */
-    height: calc(var(--card-width));
 }
 
 .switch-card.drag-over {
     transform: scale(0.95);
     opacity: 0.5;
-    transition: transform 0.1s ease; /* Quicker scaling */
+    transition: transform 0.1s ease;
 }
 
 .switch-title {
-    margin: 0 0 6px 0;
-    font-size: 1.1rem; /* Slightly smaller */
+    margin: 0;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(0.7vw + 0.3vh);
     font-weight: 700;
     letter-spacing: -0.01em;
     text-transform: capitalize;
 }
 
 .switch-type {
-    font-size: 1.0rem; /* Slightly smaller */
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(0.6vw + 0.3vh);
     font-weight: 600;
-    margin: 0 0 12px 0; /* Space below subtitle */
+    margin: 0;
 }
 
 .switch-specs {
+    height: 65%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 8px;
-    font-size: 0.85rem;
     width: 100%;
-    align-items: center; /* Centers vertically */
-    justify-items: center; /* Centers horizontally */
 }
 
 .spec-item {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    align-items: center; /* Center the content horizontally */
-    justify-content: center; /* Center the content vertically */
+    align-items: center;
+    justify-content: center;
+    gap: calc(0.2vw + 0.1vh);
 }
 
-
 .spec-label {
-    font-size: 0.7rem; /* Smaller font */
+    font-size: calc(0.45vw + 0.2vh);
     text-transform: uppercase;
     font-weight: 600;
 }
 
 .spec-value {
     font-weight: 600;
+    font-size: calc(0.5vw + 0.25vh);
 }
 
-/* Subtle texture overlay */
 .switch-card::before {
     content: '';
     position: absolute;
@@ -111,22 +111,4 @@ body {
 .placeholder {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 12px;
-}
-
-@media screen and (max-width: 1200px) {
-    .switch-grid {
-        grid-template-columns: repeat(5, 1fr); /* 5 columns on medium screens */
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .switch-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 columns on smaller screens */
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .switch-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns on very small screens */
-    }
 }

@@ -1,6 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.switch-grid');
-    grid.style.gridTemplateColumns = `repeat(${styles.gridColumns}, 1fr)`;
+    
+    // Responsive grid columns based on screen width
+    function updateGridColumns() {
+        const width = window.innerWidth;
+        let columns;
+        if (width < 480) columns = 2;        // Mobile phones
+        else if (width < 768) columns = 3;   // Large phones/small tablets
+        else if (width < 1024) columns = 4;  // Tablets
+        else columns = 6;                    // Desktop
+        
+        grid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+    }
+    
+    // Initial setup and window resize handling
+    updateGridColumns();
+    window.addEventListener('resize', updateGridColumns);
 
     Object.entries(switchData.items).forEach(([key, item]) => {
         const switchCard = createSwitchCard(key, item);
@@ -8,31 +23,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     let draggedElement = null;
-    let mouseDown = false;
-    let offsetX, offsetY;
+    let isDragging = false;
+    let startX, startY, offsetX, offsetY, originalWidth;
 
-    function handleMouseDown(e) {
-        const card = e.target.closest('.switch-card');
+    function handleStart(e) {
+        const touch = e.touches ? e.touches[0] : e;
+        const card = touch.target.closest('.switch-card');
+        
         if (card) {
-            mouseDown = true;
+            e.preventDefault(); // Prevent scrolling while dragging
+            isDragging = true;
 
-            // Calculate offset from mouse to card top-left corner
+            // Store the original width of the card
             const rect = card.getBoundingClientRect();
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
+            originalWidth = rect.width;
+
+            // Calculate offset from touch/mouse to card top-left corner
+            offsetX = touch.clientX - rect.left;
+            offsetY = touch.clientY - rect.top;
+            startX = touch.clientX;
+            startY = touch.clientY;
 
             setTimeout(() => {
-                if (mouseDown) {
-                    startDragging(card, e);
+                if (isDragging) {
+                    startDragging(card, touch);
                 }
             }, 100);
         }
     }
 
-    function startDragging(card, e) {
+    function startDragging(card, touch) {
         draggedElement = card;
 
-        // Create placeholder before changing card position
+        // Create placeholder
         const placeholder = document.createElement('div');
         placeholder.className = 'switch-card placeholder';
         placeholder.style.visibility = 'hidden';
@@ -42,33 +65,37 @@ document.addEventListener('DOMContentLoaded', () => {
         // Set up card for dragging
         card.classList.add('dragging');
         card.style.position = 'fixed';
+        card.style.width = `${originalWidth}px`;
+        card.style.height = `${originalWidth}px`; // Maintain square aspect ratio
         card.style.zIndex = '1000';
 
-        updatePosition(e);
+        updatePosition(touch);
     }
 
-    function handleMouseMove(e) {
-        if (draggedElement) {
-            e.preventDefault();
-            updatePosition(e);
+    function handleMove(e) {
+        if (!draggedElement) return;
+        
+        e.preventDefault();
+        const touch = e.touches ? e.touches[0] : e;
+        updatePosition(touch);
 
-            const cards = document.elementsFromPoint(e.clientX, e.clientY)
-                .filter(el => el.classList.contains('switch-card') && !el.classList.contains('dragging'));
+        const cards = document.elementsFromPoint(touch.clientX, touch.clientY)
+            .filter(el => el.classList.contains('switch-card') && !el.classList.contains('dragging'));
 
-            document.querySelectorAll('.switch-card').forEach(card => {
-                card.classList.remove('drag-over');
-            });
+        document.querySelectorAll('.switch-card').forEach(card => {
+            card.classList.remove('drag-over');
+        });
 
-            if (cards.length > 0) {
-                cards[0].classList.add('drag-over');
-            }
+        if (cards.length > 0) {
+            cards[0].classList.add('drag-over');
         }
     }
 
-    function handleMouseUp(e) {
-        mouseDown = false;
+    function handleEnd(e) {
+        isDragging = false;
         if (draggedElement) {
-            const droppedOn = document.elementsFromPoint(e.clientX, e.clientY)
+            const touch = e.changedTouches ? e.changedTouches[0] : e;
+            const droppedOn = document.elementsFromPoint(touch.clientX, touch.clientY)
                 .find(el => el.classList.contains('switch-card') && !el.classList.contains('dragging'));
 
             if (droppedOn) {
@@ -76,14 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 swapElements(draggedElement.placeholder, droppedOn);
             }
 
-            // Reset the dragged element
             resetDraggedElement();
         }
     }
 
-    function updatePosition(e) {
-        const x = e.clientX - offsetX;
-        const y = e.clientY - offsetY;
+    function updatePosition(touch) {
+        const x = touch.clientX - offsetX;
+        const y = touch.clientY - offsetY;
         draggedElement.style.left = `${x}px`;
         draggedElement.style.top = `${y}px`;
     }
@@ -91,8 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function swapElements(el1, el2) {
         const parent = el1.parentNode;
         const sibling = el1.nextSibling === el2 ? el1 : el1.nextSibling;
-
-        // Perform the swap
         el2.parentNode.insertBefore(el1, el2.nextSibling);
         parent.insertBefore(el2, sibling);
     }
@@ -102,9 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
         draggedElement.style.position = '';
         draggedElement.style.top = '';
         draggedElement.style.left = '';
+        draggedElement.style.width = '';
+        draggedElement.style.height = '';
         draggedElement.style.zIndex = '';
-
-        // Replace placeholder with dragged element
         draggedElement.placeholder.replaceWith(draggedElement);
         draggedElement = null;
     }
@@ -159,13 +183,18 @@ document.addEventListener('DOMContentLoaded', () => {
     
         return card;
     }
-    
-    
 
-    document.addEventListener('mousedown', handleMouseDown);
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
+    // Add both mouse and touch event listeners
+    document.addEventListener('mousedown', handleStart);
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('mouseup', handleEnd);
+    
+    document.addEventListener('touchstart', handleStart, { passive: false });
+    document.addEventListener('touchmove', handleMove, { passive: false });
+    document.addEventListener('touchend', handleEnd);
+    
+    // Prevent text selection during dragging
     document.addEventListener('selectstart', e => {
-        if (draggedElement) e.preventDefault(); // Prevent text selection during dragging
+        if (draggedElement) e.preventDefault();
     });
 });
